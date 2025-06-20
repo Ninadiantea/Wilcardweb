@@ -1,7 +1,0 @@
-name = "wildcard-list"
-main = "worker.js"
-compatibility_date = "2025-06-20"
-
-[[kv_namespaces]]
-binding = "WILDCARD_LIST"
-id = "YOUR_KV_NAMESPACE_ID"
