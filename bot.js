@@ -1,4 +1,6 @@
-// BOT TELEGRAM UMUM: Semua domain & worker di akun Cloudflare user masing-masing
+// DIANA STORE Wildcard Bot (umum, tanpa folder, semua domain user)
+// By: Teh Ninadian
+
 require('dotenv').config();
 const { Telegraf, Markup } = require('telegraf');
 const axios = require('axios');
@@ -43,7 +45,7 @@ bot.on('text', async (ctx, next) => {
   }
   if (sess?.step === 'await_zone_id') {
     sess.zoneId = ctx.message.text.trim();
-    // Get domain name dari Zone ID user
+    // Ambil domain dari Zone ID user
     try {
       const res = await axios.get(
         `https://api.cloudflare.com/client/v4/zones/${sess.zoneId}`,
@@ -73,7 +75,7 @@ bot.on('text', async (ctx, next) => {
         {
           type: 'A',
           name: `*.${sub}`,
-          content: '192.0.2.1', // Bisa diubah sesuai preferensi user
+          content: '192.0.2.1', // Bisa ganti sesuai kebutuhan user
           ttl: 1,
           proxied: true
         },
@@ -81,7 +83,7 @@ bot.on('text', async (ctx, next) => {
       );
       // 2. Deploy Worker web wildcard ke subdomain user
       // 2a. Upload Worker script
-      const workerScript = fs.readFileSync(path.join(__dirname, 'worker_web.js'), 'utf8');
+      const workerScript = fs.readFileSync(path.join(__dirname, 'pekerja.js'), 'utf8');
       await axios.put(
         `https://api.cloudflare.com/client/v4/accounts/${sess.accountId}/workers/scripts/wildcard_web_${sub}`,
         workerScript,
