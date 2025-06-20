@@ -1,3 +1,5 @@
+// Worker web wildcard modern untuk DIANA STORE
+
 export default {
   async fetch(request, env, ctx) {
     const host = new URL(request.url).host;
