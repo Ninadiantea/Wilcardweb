@@ -1,6 +1,6 @@
 {
   "name": "wildcard-bot",
-  "main": "index.js",
+  "main": "bot.js",
   "type": "commonjs",
   "dependencies": {
     "axios": "^1.7.2",
